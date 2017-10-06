@@ -26,7 +26,26 @@ This project uses the following technologies
 Python 3.5.2+
 
 ## Docker Usage
+
+Docker is the recommended  way to get started using this project.
+
 To run the server, please execute the following from the root directory:
+
+```
+docker-compose up -d
+```
+
+and open your browser to here:
+
+```
+https://localhost/
+```
+
+Your Swagger definition lives here:
+
+```
+https://localhost/api/swagger.json
+```
 
 **NOTE:** in the docker version, we've included an SSL cert for convenience, however,
 some REST clients do not like these self signed certificates at all, while others may allow
@@ -38,53 +57,10 @@ If your client doesn't allow this, or you just dont want to mess with it you hav
 2. Use http
 
 
-your api client will not allow
 
-```
-docker-compose up -d
-```
-
-and open your browser to here:
-
-```
-https://localhost/api/ui/
-```
-
-
-## Local Usage
-To run the server, please execute the following from the root directory:
-
-```
-pip3 install -r requirements.txt
-python3 -m swagger_server
-```
-
-and open your browser to here:
-
-```
-http://localhost:8080/api/ui/
-```
-
-Your Swagger definition lives here:
-
-```
-http://localhost:8080/api/swagger.json
-```
-
+## Development / Testing
 To launch the integration tests, use tox:
 ```
 sudo pip install tox
 tox
-```
-
-## Running with Docker
-
-To run the server on a Docker container, please execute the following from the root directory:
-
-```bash
-# building the image
-docker build -t swagger_server .
-
-# starting up a container
-docker run -p 8080:8080 swagger_server
 ```
