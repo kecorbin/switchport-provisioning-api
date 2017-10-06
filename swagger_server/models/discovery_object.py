@@ -159,7 +159,7 @@ class DiscoveryObject(Model):
         if id:
             doc = db.find_one({"id": id}, {"_id": 0})
             if doc:
-                return cls.from_dict(doc[0])
+                return cls.from_dict(doc)
         else:
             cursor = db.find({}, {"_id": 0})
             objs = [cls.from_dict(i) for i in cursor]
