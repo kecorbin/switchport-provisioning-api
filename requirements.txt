@@ -2,4 +2,5 @@ connexion == 1.1.9
 python_dateutil == 2.6.0
 setuptools >= 21.0.0
 Flask-PyMongo==0.5.1
-flask-cors
+Flask-Cors==3.0.3
+tornado==4.5.2

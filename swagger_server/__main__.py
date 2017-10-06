@@ -2,10 +2,10 @@
 
 import connexion
 from .encoder import JSONEncoder
-from flask.ext.cors import CORS
+from flask_cors import CORS
 
 if __name__ == '__main__':
-    app = connexion.App(__name__, specification_dir='./swagger/')
+    app = connexion.App(__name__, specification_dir='./swagger/', server='tornado')
     app.app.json_encoder = JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'Server Provisoning API '})
     cors = CORS(app.app, resources={r"/api/*": {"origins": "*"}})
