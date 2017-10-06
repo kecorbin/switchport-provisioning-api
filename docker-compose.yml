@@ -1,0 +1,33 @@
+version: '2'
+services:
+  nginx:
+    image: nginx
+    links:
+      - web:web
+    volumes:
+      - ./static:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
+
+  web:
+    restart: always
+    build: .
+    links:
+      - mongo:mongo
+    depends_on:
+      - mongo
+    expose:
+      - "8000"
+    environment:
+      MONGO_DB: mongo
+
+  mongo:
+    image: mongo:latest
+    expose:
+      - 27017
+
